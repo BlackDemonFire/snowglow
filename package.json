@@ -37,6 +37,7 @@
     "printWidth": 80
   },
   "scripts": {
+    "build": "tsc",
     "lint": "prettier -c src",
     "prettify": "prettier -w src",
     "start:dev": "yarn lint && node --loader ts-node/esm src/bot.ts",
