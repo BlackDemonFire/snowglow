@@ -39,4 +39,8 @@ jobs:
               with:
                   platforms: linux/amd64,linux/arm64
                   push: ${{ github.event_name != 'pull_request' }}
-                  tags: blackdemonfire/snowglow:latest,${{ steps.meta.outputs.tags }}
+                  tags: ${{ steps.meta.outputs.tags }}
+                  flavor: |
+                    latest=auto
+                    prefix=
+                    suffix=
