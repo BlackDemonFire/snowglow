@@ -1,5 +1,4 @@
 import "dotenv/config";
-import { logger } from "./logger.js";
 
 interface IDBConfig {
     host: string;
@@ -12,11 +11,14 @@ interface IDBConfig {
 class Config {
     token: string;
     db: IDBConfig;
+    useLogs: boolean;
     constructor() {
         this.token =
             process.env.TOKEN ||
             (() => {
-                logger.error("There was no `TOKEN` supplied in the .env file.");
+                console.error(
+                    "There was no `TOKEN` supplied in the .env file."
+                );
                 process.exit(1);
             })();
         this.db = {
@@ -26,6 +28,7 @@ class Config {
             password: process.env.DB_PASSWORD || "",
             database: process.env.DB_NAME || "snowglow",
         };
+        this.useLogs = process.env.USE_LOGS == "1";
     }
 }
 export default new Config();

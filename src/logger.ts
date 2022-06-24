@@ -1,7 +1,8 @@
 import { existsSync, mkdirSync } from "fs";
 import winston, { createLogger } from "winston";
+import config from "./config.js";
 
-if (!existsSync("logs")) mkdirSync("logs");
+if (config.useLogs && !existsSync("logs")) mkdirSync("logs");
 
 export const logger = createLogger({
     level: "info",
@@ -9,6 +10,11 @@ export const logger = createLogger({
         new winston.transports.Console({
             format: winston.format.cli(),
         }),
+    ],
+});
+
+if (config.useLogs) {
+    [
         new winston.transports.File({
             filename: "logs/error.log",
             level: "error",
@@ -29,5 +35,5 @@ export const logger = createLogger({
             level: "warn",
             format: winston.format.json(),
         }),
-    ],
-});
+    ].forEach(logger.add);
+}
