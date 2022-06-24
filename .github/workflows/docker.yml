@@ -26,8 +26,6 @@ jobs:
                       type=sha
                   flavor: |
                       latest=auto
-                      prefix=
-                      suffix=
             - name: Set up QEMU
               uses: docker/setup-qemu-action@v2
             - name: Set up Docker Buildx
@@ -42,5 +40,5 @@ jobs:
               uses: docker/build-push-action@v3
               with:
                   push: ${{ github.event_name != 'pull_request' }}
-                  tags: blackdemonfire/snowglow:latest
+                  tags: ghcr.io/blackdemonfire/snowglow:latest
 
