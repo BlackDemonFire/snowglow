@@ -24,6 +24,10 @@ jobs:
                   tags: |
                       type=ref,event=branch
                       type=sha
+                  flavor: |
+                      latest=auto
+                      prefix=
+                      suffix=
             - name: Set up QEMU
               uses: docker/setup-qemu-action@v2
             - name: Set up Docker Buildx
