@@ -37,10 +37,6 @@ jobs:
             - name: Build and push - Bot
               uses: docker/build-push-action@v3
               with:
-                  platforms: linux/amd64,linux/arm64
                   push: ${{ github.event_name != 'pull_request' }}
-                  tags: ${{ steps.meta.outputs.tags }}
-                  flavor: |
-                    latest=auto
-                    prefix=
-                    suffix=
+                  tags: blackdemonfire/snowglow:latest
+
