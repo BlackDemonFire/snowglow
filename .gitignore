@@ -2,7 +2,5 @@
 .vscode/
 .env
 node_modules/
-build/
-tmp/
-temp/
+dist/
 logs/
